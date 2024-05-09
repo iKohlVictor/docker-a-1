@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	res, err := http.DefaultClient.Get("http://localhost:8080/number")
+	res, err := http.DefaultClient.Get("http://server:8080/number")
 	if err != nil {
 		log.Panicf("Erro ao realizar a request: %v", err)
 	}
