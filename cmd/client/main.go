@@ -4,10 +4,19 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
-	res, err := http.DefaultClient.Get("http://server:8080/number")
+	host := os.Getenv("SERVER_HOST")
+	port := os.Getenv("SERVER_PORT")
+	if host == "" {
+		host = "localhost"
+	}
+	if port == "" {
+		port = "8080"
+	}
+	res, err := http.DefaultClient.Get("http://" + host + ":" + port + "/number")
 	if err != nil {
 		log.Panicf("Erro ao realizar a request: %v", err)
 	}
