@@ -19,7 +19,7 @@ func main() {
 	mux.Get("/number", func(w http.ResponseWriter, r *http.Request) {
 		randomInt := rand.Int()
 		w.Header().Set("Content-Type", "application/json")
-		log.Printf("Generated random number: %d", randomInt)
+		log.Printf("Generated live demo random number: %d", randomInt)
 		json.NewEncoder(w).Encode(map[string]int{"number": randomInt})
 	})
 

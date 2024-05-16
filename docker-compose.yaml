@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  server:
+    build: .
+    ports:
+      - 8080:8080
+    volumes:
+      - go-modules-cache:/go/pkg/mod
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliente
+    depends_on:
+      - server
+    environment:
+      - SERVER_HOST=server
+      - SERVER_PORT=8080
+
+volumes:
+  go-modules-cache:
